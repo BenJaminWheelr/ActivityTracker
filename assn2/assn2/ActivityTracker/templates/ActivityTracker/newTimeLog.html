@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todos</title>
+        <link rel="stylesheet" href="{% static 'ActivityTracker/style.css'%}">
+    </head>
+    <body>
+        <div id="BannerDiv">
+            <a href="/"><h1 id="BannerText">Activity Tracker</h1></a>
+        </div>
+        <main id="activityForm">
+            <form action="logNewTimeLog/" method="post" id="timeForm">
+                <label>
+                    <div>Start Time</div>
+                    <input type="datetime-local" name="startDatetime" id="datetime">
+                </label>
+                <label>
+                    <div>End Time</div>
+                    <input type="datetime-local" name="endDatetime" id="datetime">
+                </label>
+                <button id="saveButton">Save</button>
+            </form>
+        </main>
+    </body>
+</html>

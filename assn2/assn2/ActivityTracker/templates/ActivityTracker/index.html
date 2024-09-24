@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todos</title>
+        <link rel="stylesheet" href="{% static 'ActivityTracker/style.css'%}">
+    </head>
+    <body>
+        <div id="BannerDiv">
+            <h1 id="BannerText">Activity Tracker</h1>
+            <a href="/newActivity/" id="BannerText">Log New Activity</a>
+        </div>
+        {% if activities %}
+            {% for activity in activities %}
+            <a href="/activity/{{activity.id}}/" id="activityLink">
+                <div id="ActivityDiv">
+                    <h2>{{activity.name}}</h2>
+                    <h3>Time Spent: {{activity.time_spent}}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        {% else %}
+        <p>You don't have any activities!</p>
+        {% endif %}
+
+    </body>
+</html>

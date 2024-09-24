@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todos</title>
+        <link rel="stylesheet" href="{% static 'ActivityTracker/style.css'%}">
+    </head>
+    <body>
+        <div id="BannerDiv">
+            <a href="/"><h1 id="BannerText">Activity Tracker</h1></a>
+            <a href="newTimeLog/" id="BannerText">New Time Log</a>
+        </div>
+        <h1 id="tableTitle">{{activity.name}}</h1>
+        <div id="tableDiv">
+            <table>
+                <thead>
+                    <th>Start At</th>
+                    <th>End At</th>
+                    <th>Time Spent</th>
+                </thead>
+                <tbody>
+                    {% if timeLogs %}
+                        {% for log in timeLogs %}
+                            <tr>
+                                <td>{{log.startTime}}</td>
+                                <td>{{log.endTime}}</td>
+                                <td>{{log.timeSpent}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>None yet</td>
+                            <td>None yet</td>
+                            <td>0</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <form method="post" action="deleteActivity/">
+            <button id="deleteButton">Delete Activity</button>
+        </form>
+    </body>
+</html>
